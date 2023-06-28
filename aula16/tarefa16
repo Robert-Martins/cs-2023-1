@@ -1,0 +1,81 @@
+# Tarefa 016 - Expressões Regulares - 28/06/2023
+
+1. Elaborar expressões regulares para validação dos objetos constantes da tabela a seguir:
+
+|objeto|formato|Observação|
+|--|--|--|
+|Data|dd/mm/aa|as "//" (barras) devem fazer parte da regex|
+
+^(0[1-9]|1\d|2\d|3[01])/(0[1-9]|1[0-2])/(\d{2})$
+
+
+|Data|dd/mm/aaaa|as "//" (barras) devem fazer parte da regex|
+
+^(0[1-9]|[12]\d|3[01])/(0[1-9]|1[0-2])/\d{4}$
+
+
+|Data|dd/mm/aaa hh:mm:ss|as "//" (barras), os ":" dois pontos e o espaço devem fazer parte da regex|
+
+^(0[1-9]|[12]\d|3[01])/(0[1-9]|1[0-2])/\d{4} (?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d$
+
+|Data|yy/mm/dd|as "//" (barras) devem fazer parte da regex|
+
+^(?:\d{2})/(?:0[1-9]|1[0-2])/(?:0[1-9]|1\d|2[0-9]|3[01])$
+
+|Data|yyyy/mm/dd|as "//" (barras) devem fazer parte da regex|
+
+^(\\d{4})/(0[1-9]|1[0-2])/(0[1-9]|[12]\\d|3[01])$
+
+
+|Número decimal|dd.ddd.ddd|Os "." (pontos ) devem fazer parte da regex. Tanto a parte inteira, como a fracionária podem conter de 1 a 5 casas|
+
+^\d{1,2}\.\d{1,5}\.\d{1,5}$
+
+|Nomes de Arquivos / documentos|nome.(doc,docx,xls,xlsx,pdf,csv,txt)|pode utilizar outras extensões para teste.|
+
+^[\w\s-]+\.(docx?|xlsx?|pdf|csv|txt)$
+
+|E-mail|nome@dominio|dominio pode ser ".com", ".com.br", ".goias.gov.br", "(.mil, .gov, .esp, .edu).(br,ar,uk,fr,ru,es,it)"|
+
+^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.(?:com|com\.br|goias\.gov\.br|(?:mil|gov|esp|edu)\.(?:br|ar|uk|fr|ru|es|it)))$
+
+|Codigo Cor HTML ||#00ccff|
+
+^#([A-Fa-f0-9]{6})$
+
+
+|Arquivo de Imagem||*.(jpg,gif,png), etc.|
+
+^.*\.(jpg|jpeg|gif|png|bmp)$
+
+|Endereco IP ||192.168.1.1|
+
+^(?:\d{1,3}\.){3}\d{1,3}$
+
+|Arquivos Multimedia ||*.(swf,mov,wma,mpg,mp3,wav)|
+
+^.*\.(swf|mov|wma|mpg|mp3|wav)$
+
+|Telefone (BR) ||(11) 5555-1977|
+
+^\(\d{2}\) \d{4}-\d{4}$
+
+|Celular (BR)|(55) (62) 9834.1243|os parênteses e pontos fazem parte da regex.|
+
+^\(55\) \(62\) \d{4}\.\d{4}$
+
+|Hora|(HH:MM:SS)|Os ":" dois pontos, fazem parte da regex.|
+
+^([0-1]?[0-9]|2[0-3]):[0-5][0-9] :[0-6][0-9]$
+
+|URL||http://www.google.com, https://www.google.com.br | 
+
+(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})(\.[a-zA-Z0-9]{2,})?
+
+|Domínio||www.yahoo.com, www.yahoo.com.br|
+
+(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})(\.[a-zA-Z0-9]{2,})?
+
+|Telefone Internacional |1.245.532.3422|os "." pontos fazem parte da regex.|
+
+^([0-9]){1}\.([0-9]){3}\.([0-9]){3}\.([0-9]){3}
